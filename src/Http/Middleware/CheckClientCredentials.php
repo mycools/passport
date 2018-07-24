@@ -1,11 +1,11 @@
 <?php
 
-namespace Laravel\Passport\Http\Middleware;
+namespace Mycools\Passport\Http\Middleware;
 
 use Closure;
 use League\OAuth2\Server\ResourceServer;
 use Illuminate\Auth\AuthenticationException;
-use Laravel\Passport\Exceptions\MissingScopeException;
+use Mycools\Passport\Exceptions\MissingScopeException;
 use League\OAuth2\Server\Exception\OAuthServerException;
 use Symfony\Bridge\PsrHttpMessage\Factory\DiactorosFactory;
 
@@ -59,7 +59,7 @@ class CheckClientCredentials
      * @param  \Psr\Http\Message\ServerRequestInterface $psr
      * @param  array  $scopes
      * @return void
-     * @throws \Laravel\Passport\Exceptions\MissingScopeException
+     * @throws \Mycools\Passport\Exceptions\MissingScopeException
      */
     protected function validateScopes($psr, $scopes)
     {

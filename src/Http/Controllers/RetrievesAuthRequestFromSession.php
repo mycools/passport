@@ -1,10 +1,10 @@
 <?php
 
-namespace Laravel\Passport\Http\Controllers;
+namespace Mycools\Passport\Http\Controllers;
 
 use Exception;
 use Illuminate\Http\Request;
-use Laravel\Passport\Bridge\User;
+use Mycools\Passport\Bridge\User;
 
 trait RetrievesAuthRequestFromSession
 {

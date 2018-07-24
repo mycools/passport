@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\Passport;
+namespace Mycools\Passport;
 
 class ClientRepository
 {
@@ -8,7 +8,7 @@ class ClientRepository
      * Get a client by the given ID.
      *
      * @param  int  $id
-     * @return \Laravel\Passport\Client|null
+     * @return \Mycools\Passport\Client|null
      */
     public function find($id)
     {
@@ -21,7 +21,7 @@ class ClientRepository
      * Get an active client by the given ID.
      *
      * @param  int  $id
-     * @return \Laravel\Passport\Client|null
+     * @return \Mycools\Passport\Client|null
      */
     public function findActive($id)
     {
@@ -35,7 +35,7 @@ class ClientRepository
      *
      * @param  int  $clientId
      * @param  mixed  $userId
-     * @return \Laravel\Passport\Client|null
+     * @return \Mycools\Passport\Client|null
      */
     public function findForUser($clientId, $userId)
     {
@@ -76,7 +76,7 @@ class ClientRepository
     /**
      * Get the personal access token client for the application.
      *
-     * @return \Laravel\Passport\Client
+     * @return \Mycools\Passport\Client
      */
     public function personalAccessClient()
     {
@@ -97,7 +97,7 @@ class ClientRepository
      * @param  string  $redirect
      * @param  bool  $personalAccess
      * @param  bool  $password
-     * @return \Laravel\Passport\Client
+     * @return \Mycools\Passport\Client
      */
     public function create($userId, $name, $redirect, $personalAccess = false, $password = false)
     {
@@ -122,7 +122,7 @@ class ClientRepository
      * @param  int  $userId
      * @param  string  $name
      * @param  string  $redirect
-     * @return \Laravel\Passport\Client
+     * @return \Mycools\Passport\Client
      */
     public function createPersonalAccessClient($userId, $name, $redirect)
     {
@@ -139,7 +139,7 @@ class ClientRepository
      * @param  int  $userId
      * @param  string  $name
      * @param  string  $redirect
-     * @return \Laravel\Passport\Client
+     * @return \Mycools\Passport\Client
      */
     public function createPasswordGrantClient($userId, $name, $redirect)
     {
@@ -152,7 +152,7 @@ class ClientRepository
      * @param  Client  $client
      * @param  string  $name
      * @param  string  $redirect
-     * @return \Laravel\Passport\Client
+     * @return \Mycools\Passport\Client
      */
     public function update(Client $client, $name, $redirect)
     {
@@ -166,8 +166,8 @@ class ClientRepository
     /**
      * Regenerate the client secret.
      *
-     * @param  \Laravel\Passport\Client  $client
-     * @return \Laravel\Passport\Client
+     * @param  \Mycools\Passport\Client  $client
+     * @return \Mycools\Passport\Client
      */
     public function regenerateSecret(Client $client)
     {
@@ -194,7 +194,7 @@ class ClientRepository
     /**
      * Delete the given client.
      *
-     * @param  \Laravel\Passport\Client  $client
+     * @param  \Mycools\Passport\Client  $client
      * @return void
      */
     public function delete(Client $client)
