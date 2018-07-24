@@ -1,0 +1,42 @@
+.btn-google {
+    color: #fff;
+    background-color: #dd4b39;
+    border-color: rgba(0,0,0,0.2);
+}
+.btn-swu {
+    color: #FFF;
+    background-color: #6668ac;
+    border-color: rgba(0,0,0,0.2);
+}
+.or_seperator {
+    color: #b7bfc6;
+    font-size: 0.875rem;
+    margin:25px 0;
+    position: relative;
+    text-align: center;
+    text-transform:uppercase;
+}
+.or_seperator:before, .or_seperator:after {
+    border-top: 1px solid #e0e6e8;
+    content: "";
+    height: 1px;
+    position: absolute;
+    top: 50%;
+    width: 40%;
+    z-index: 0;
+}
+.or_seperator:before {
+    left:0;
+}
+.or_seperator:after{
+    right:0;
+}
+#mobile-logo{
+    display:none;
+}
+#mobile-logo img{
+    max-width:75%;
+}
+@media (max-width: 767.98px) {
+    #mobile-logo{ display:block; }
+}

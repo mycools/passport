@@ -8,11 +8,12 @@
     <title>{{ config('app.name') }} - Authorization</title>
 
     <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
-
+    <link href="{{ asset('/auth/assets/css/app.css') }}" rel="stylesheet">
+	<link rel="stylesheet" href="{{ asset('/auth/assets/css/auth.css') }}">
     <style>
         .passport-authorize .container {
-            margin-top: 30px;
+            margin-top: 20px;
+            margin-bottom: 20px;
         }
 
         .passport-authorize .scopes {
@@ -20,12 +21,12 @@
         }
 
         .passport-authorize .buttons {
-            margin-top: 25px;
+            margin-top: 15px;
             text-align: center;
         }
 
         .passport-authorize .btn {
-            width: 125px;
+/*             width: 125px; */
         }
 
         .passport-authorize .btn-approve {
@@ -37,16 +38,45 @@
         }
     </style>
 </head>
+@if(env('OAUTH_AUTO_SCOPE')==true)
+<body>
+    <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-6 col-sm-3 col-md-6 col-lg-2">
+                    Redirecting....
+                </div>
+            </div>
+    </div>
+    <form id="autoallow" method="post" action="/oauth/authorize">
+        {{ csrf_field() }}
+
+        <input type="hidden" name="state" value="{{ $request->state }}">
+        <input type="hidden" name="client_id" value="{{ $client->id }}">
+        
+    </form>
+    <script>
+    document.getElementById('autoallow').submit();
+    </script>
+</body>
+@else
 <body class="passport-authorize">
     <div class="container">
+	    <div class="row justify-content-center">
+	    	<div class="col-6 col-sm-3 col-md-6 col-lg-2">
+                <img src="{{ asset('/auth/images/logo.png') }}" class="img-fluid" />
+            </div>
+	    </div>
         <div class="row justify-content-center">
-            <div class="col-md-6">
+            <div class="col-md-10 col-lg-8 col-xl-6">
                 <div class="card card-default">
                     <div class="card-header">
-                        Authorization Request
+                        Log in with {{ env('AUTH_UNV') }} Account
+
+
                     </div>
                     <div class="card-body">
                         <!-- Introduction -->
+                        
                         <p><strong>{{ $client->name }}</strong> is requesting permission to access your account.</p>
 
                         <!-- Scope List -->
@@ -56,12 +86,32 @@
 
                                     <ul>
                                         @foreach ($scopes as $scope)
-                                            <li>{{ $scope->description }}</li>
+                                        	@php 
+                                        	
+                                        	$userRes = $user->toArray();
+                                        	$emails = [];
+                                        	foreach($user->emails as $e){
+	                                        	$emails[] = $e->email_name;
+                                        	}
+                                        	$userRes['emails'] = implode(', ',$emails);
+                                        	
+                                            @endphp
+                                            <li>
+                                            @if (is_array($scope->description))
+                                            <div><strong>{{ __($scope->description['description'],$userRes) }}</strong></div>
+                                            	@if(isset($scope->description['preview']))
+                                            	<div><small>{{ __($scope->description['preview'],$userRes) }}</small></div>
+                                            	@endif
+                                            @else
+                                            <div>{{ __($scope->description,$userRes) }}</div>
+                                            @endif
+                                            </li>
                                         @endforeach
                                     </ul>
                             </div>
                         @endif
-
+				<div class="row justify-content-center">
+					<div class="col-sm-8 col-lg-6">
                         <div class="buttons">
                             <!-- Authorize Button -->
                             <form method="post" action="/oauth/authorize">
@@ -69,9 +119,10 @@
 
                                 <input type="hidden" name="state" value="{{ $request->state }}">
                                 <input type="hidden" name="client_id" value="{{ $client->id }}">
-                                <button type="submit" class="btn btn-success btn-approve">Authorize</button>
+                                <button type="submit" class="btn btn-swu btn-approve btn-block">Continue as {{$user->firstname_en}}</button>
                             </form>
-
+                        </div>
+                        <div class="buttons">
                             <!-- Cancel Button -->
                             <form method="post" action="/oauth/authorize">
                                 {{ csrf_field() }}
@@ -79,13 +130,16 @@
 
                                 <input type="hidden" name="state" value="{{ $request->state }}">
                                 <input type="hidden" name="client_id" value="{{ $client->id }}">
-                                <button class="btn btn-danger">Cancel</button>
+                                <button class="btn btn-default  btn-block">Cancel</button>
                             </form>
                         </div>
+					</div>
+				</div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </body>
+@endif
 </html>
