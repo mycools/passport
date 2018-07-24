@@ -32,7 +32,7 @@ class PassportServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'passport');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'passportoauth');
 
         $this->deleteCookieOnLogout();
 
@@ -40,12 +40,15 @@ class PassportServiceProvider extends ServiceProvider
             $this->registerMigrations();
 
             $this->publishes([
-                __DIR__.'/../resources/views' => base_path('resources/views/vendor/passport'),
-            ], 'passport-views');
+                __DIR__.'/../resources/views' => base_path('resources/views/vendor/passportoauth'),
+            ], 'passportoauth-views');
+             $this->publishes([
+                __DIR__.'/../resources/auth' => base_path('public/auth'),
+            ], 'passportoauth-asset');
 
             $this->publishes([
-                __DIR__.'/../resources/assets/js/components' => base_path('resources/assets/js/components/passport'),
-            ], 'passport-components');
+                __DIR__.'/../resources/assets/js/components' => base_path('resources/assets/js/components/passportoauth'),
+            ], 'passportoauth-components');
 
             $this->commands([
                 Console\InstallCommand::class,

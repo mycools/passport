@@ -75,7 +75,7 @@ class AuthorizationController
 
             $request->session()->put('authRequest', $authRequest);
 
-            return $this->response->view('passport::authorize', [
+            return $this->response->view('passportoauth::authorize', [
                 'client' => $client,
                 'user' => $user,
                 'scopes' => $scopes,
