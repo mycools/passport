@@ -1,5 +1,5 @@
 <?php
-namespace Laravel\Passport\Http\Controllers;
+namespace Mycools\Passport\Http\Controllers;
 
 use Illuminate\Http\Response;
 use Psr\Http\Message\ResponseInterface;

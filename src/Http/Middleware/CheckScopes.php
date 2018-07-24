@@ -1,9 +1,9 @@
 <?php
 
-namespace Laravel\Passport\Http\Middleware;
+namespace Mycools\Passport\Http\Middleware;
 
 use Illuminate\Auth\AuthenticationException;
-use Laravel\Passport\Exceptions\MissingScopeException;
+use Mycools\Passport\Exceptions\MissingScopeException;
 
 class CheckScopes
 {
@@ -15,7 +15,7 @@ class CheckScopes
      * @param  mixed  ...$scopes
      * @return \Illuminate\Http\Response
      * @throws \Illuminate\Auth\AuthenticationException
-     * @throws \Laravel\Passport\Exceptions\MissingScopeException
+     * @throws \Mycools\Passport\Exceptions\MissingScopeException
      */
     public function handle($request, $next, ...$scopes)
     {

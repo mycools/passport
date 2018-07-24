@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\Passport;
+namespace Mycools\Passport;
 
 use Illuminate\Database\Eloquent\Model;
 

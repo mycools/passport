@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\Passport;
+namespace Mycools\Passport;
 
 class TransientToken
 {

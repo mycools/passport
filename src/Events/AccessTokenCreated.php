@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\Passport\Events;
+namespace Mycools\Passport\Events;
 
 class AccessTokenCreated
 {

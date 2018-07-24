@@ -1,8 +1,8 @@
 <?php
 
-namespace Laravel\Passport\Bridge;
+namespace Mycools\Passport\Bridge;
 
-use Laravel\Passport\ClientRepository as ClientModelRepository;
+use Mycools\Passport\ClientRepository as ClientModelRepository;
 use League\OAuth2\Server\Repositories\ClientRepositoryInterface;
 
 class ClientRepository implements ClientRepositoryInterface
@@ -10,14 +10,14 @@ class ClientRepository implements ClientRepositoryInterface
     /**
      * The client model repository.
      *
-     * @var \Laravel\Passport\ClientRepository
+     * @var \Mycools\Passport\ClientRepository
      */
     protected $clients;
 
     /**
      * Create a new repository instance.
      *
-     * @param  \Laravel\Passport\ClientRepository  $clients
+     * @param  \Mycools\Passport\ClientRepository  $clients
      * @return void
      */
     public function __construct(ClientModelRepository $clients)
@@ -58,7 +58,7 @@ class ClientRepository implements ClientRepositoryInterface
     /**
      * Determine if the given client can handle the given grant type.
      *
-     * @param  \Laravel\Passport\Client  $record
+     * @param  \Mycools\Passport\Client  $record
      * @param  string  $grantType
      * @return bool
      */

@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\Passport;
+namespace Mycools\Passport;
 
 use Zend\Diactoros\Response;
 use Zend\Diactoros\ServerRequest;
@@ -19,14 +19,14 @@ class PersonalAccessTokenFactory
     /**
      * The client repository instance.
      *
-     * @var \Laravel\Passport\ClientRepository
+     * @var \Mycools\Passport\ClientRepository
      */
     protected $clients;
 
     /**
      * The token repository instance.
      *
-     * @var \Laravel\Passport\TokenRepository
+     * @var \Mycools\Passport\TokenRepository
      */
     protected $tokens;
 
@@ -41,8 +41,8 @@ class PersonalAccessTokenFactory
      * Create a new personal access token factory instance.
      *
      * @param  \League\OAuth2\Server\AuthorizationServer  $server
-     * @param  \Laravel\Passport\ClientRepository  $clients
-     * @param  \Laravel\Passport\TokenRepository  $tokens
+     * @param  \Mycools\Passport\ClientRepository  $clients
+     * @param  \Mycools\Passport\TokenRepository  $tokens
      * @param  \Lcobucci\JWT\Parser  $jwt
      * @return void
      */
@@ -63,7 +63,7 @@ class PersonalAccessTokenFactory
      * @param  mixed  $userId
      * @param  string  $name
      * @param  array  $scopes
-     * @return \Laravel\Passport\PersonalAccessTokenResult
+     * @return \Mycools\Passport\PersonalAccessTokenResult
      */
     public function make($userId, $name, array $scopes = [])
     {
@@ -86,7 +86,7 @@ class PersonalAccessTokenFactory
     /**
      * Create a request instance for the given client.
      *
-     * @param  \Laravel\Passport\Client  $client
+     * @param  \Mycools\Passport\Client  $client
      * @param  mixed  $userId
      * @param  array  $scopes
      * @return \Zend\Diactoros\ServerRequest
