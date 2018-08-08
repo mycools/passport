@@ -16,9 +16,9 @@ class CreateOauthScopesTable extends Migration
 	    if (!Schema::hasTable('oauth_scopes')) {
 	        Schema::create('oauth_scopes', function (Blueprint $table) {
 	            $table->increments('id')->unsigned();
-	            $table->text('scope',30)->index();
-	            $table->text('scope_description');
-	            $table->text('scope_preview');
+	            $table->string('scope',30)->index();
+	            $table->string('scope_description');
+	            $table->string('scope_preview');
 	            $table->timestamps();
 	            $table->softDeletes();
 	        });
