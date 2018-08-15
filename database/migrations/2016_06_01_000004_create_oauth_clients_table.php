@@ -17,7 +17,7 @@ class CreateOauthClientsTable extends Migration
             $table->uuid('id')->index()->primary();
             $table->integer('user_id')->index()->nullable();
             $table->string('name');
-            $table->string('secret', 100);
+            $table->string('secret', 100)->index();
             $table->text('redirect');
             $table->boolean('personal_access_client');
             $table->boolean('password_client');

@@ -1,7 +1,7 @@
 <?php
 
 namespace Mycools\Passport;
-
+use Illuminate\Support\Str;
 class ClientRepository
 {
     /**
@@ -102,6 +102,7 @@ class ClientRepository
     public function create($userId, $name, $redirect, $personalAccess = false, $password = false)
     {
         $client = Passport::client()->forceFill([
+            'id' => (string) Str::uuid(),
             'user_id' => $userId,
             'name' => $name,
             'secret' => str_random(40),

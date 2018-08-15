@@ -52,7 +52,7 @@
 
         <input type="hidden" name="state" value="{{ $request->state }}">
         <input type="hidden" name="client_id" value="{{ $client->id }}">
-        
+
     </form>
     <script>
     document.getElementById('autoallow').submit();
@@ -76,7 +76,7 @@
                     </div>
                     <div class="card-body">
                         <!-- Introduction -->
-                        
+
                         <p><strong>{{ $client->name }}</strong> is requesting permission to access your account.</p>
 
                         <!-- Scope List -->
@@ -86,15 +86,22 @@
 
                                     <ul>
                                         @foreach ($scopes as $scope)
-                                        	@php 
-                                        	
+                                        	@php
+
                                         	$userRes = $user->toArray();
                                         	$emails = [];
-                                        	foreach($user->emails as $e){
-	                                        	$emails[] = $e->email_name;
-                                        	}
-                                        	$userRes['emails'] = implode(', ',$emails);
-                                        	
+                                            if(isset($user->emails) && is_array($user->emails)){
+                                                foreach($user->emails as $e){
+	                                        	    $emails[] = $e->email_name;
+                                                }
+                                                $userRes['emails'] = implode(', ',$emails);
+                                            }else if(isset($user->emails){
+                                                $userRes['emails'] = implode(', ',$user->emails);
+                                            }else{
+                                                $userRes['emails'] = [];
+                                            }
+
+
                                             @endphp
                                             <li>
                                             @if (is_array($scope->description))
