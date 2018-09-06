@@ -3,9 +3,10 @@
 namespace Mycools\Passport;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Mycools\Passport\AutoUuid;
 class Client extends Model
 {
+    use AutoUuid;
     public $incrementing = false;
     /**
      * The database table used by the model.
