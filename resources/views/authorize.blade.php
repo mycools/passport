@@ -95,7 +95,7 @@
 	                                        	    $emails[] = $e->email_name;
                                                 }
                                                 $userRes['emails'] = implode(', ',$emails);
-                                            }else if(isset($user->emails){
+                                            }else if(isset($user->emails) && is_string($user->emails)){
                                                 $userRes['emails'] = implode(', ',$user->emails);
                                             }else{
                                                 $userRes['emails'] = [];
