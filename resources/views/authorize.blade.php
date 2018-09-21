@@ -106,9 +106,7 @@
                                             <li>
                                             @if (is_array($scope->description))
                                             <div><strong>{{ __($scope->description['description'],$userRes) }}</strong></div>
-                                            	@if(isset($scope->description['preview']))
-                                            	<div><small>{{ __($scope->description['preview'],$userRes) }}</small></div>
-                                            	@endif
+
                                             @else
                                             <div>{{ __($scope->description,$userRes) }}</div>
                                             @endif
