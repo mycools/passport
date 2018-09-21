@@ -86,29 +86,16 @@
 
                                     <ul>
                                         @foreach ($scopes as $scope)
-                                        	@php
 
-                                        	$userRes = $user->toArray();
-                                        	$emails = [];
-                                            if(isset($user->emails) && is_array($user->emails)){
-                                                foreach($user->emails as $e){
-	                                        	    $emails[] = $e->email_name;
-                                                }
-                                                $userRes['emails'] = implode(', ',$emails);
-                                            }else if(isset($user->emails) && is_string($user->emails)){
-                                                $userRes['emails'] = implode(', ',$user->emails);
-                                            }else{
-                                                $userRes['emails'] = [];
-                                            }
 
 
                                             @endphp
                                             <li>
                                             @if (is_array($scope->description))
-                                            <div><strong>{{ __($scope->description['description'],$userRes) }}</strong></div>
+                                            <div><strong>{{ __($scope->description['description']) }}</strong></div>
 
                                             @else
-                                            <div>{{ __($scope->description,$userRes) }}</div>
+                                            <div>{{ __($scope->description) }}</div>
                                             @endif
                                             </li>
                                         @endforeach
