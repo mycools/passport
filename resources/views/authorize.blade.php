@@ -86,10 +86,6 @@
 
                                     <ul>
                                         @foreach ($scopes as $scope)
-
-
-
-                                            @endphp
                                             <li>
                                             @if (is_array($scope->description))
                                             <div><strong>{{ __($scope->description['description']) }}</strong></div>
